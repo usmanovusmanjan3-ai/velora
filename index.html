@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VELORA - O‘quvchilar boshqaruvi</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                V
+            </div>
+
+            <div>
+                <h2>VELORA</h2>
+                <p>O‘QUV MARKAZI</p>
+            </div>
+
+        </div>
+
+        <div class="menu-title">
+            ASOSIY
+        </div>
+
+        <nav>
+
+            <button class="menu active">
+                <span>📊</span>
+                Dashboard
+            </button>
+
+            <button class="menu">
+                <span>👨‍🎓</span>
+                O‘quvchilar
+            </button>
+
+            <button class="menu">
+                <span>👥</span>
+                Guruhlar
+            </button>
+
+            <button class="menu">
+                <span>📈</span>
+                Statistika
+            </button>
+
+        </nav>
+
+        <div class="sidebar-info">
+
+            <div class="teacher-icon">
+                👨‍🏫
+            </div>
+
+            <div>
+                <small>Administrator</small>
+                <strong>Velora Teacher</strong>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+
+                <div class="breadcrumb">
+                    Velora / Dashboard
+                </div>
+
+                <h1>
+                    O‘quvchilar boshqaruvi
+                </h1>
+
+                <p>
+                    Velora o‘quv markazidagi o‘quvchilar nazorati
+                </p>
+
+            </div>
+
+            <button
+                class="add-btn"
+                id="addStudentBtn"
+            >
+                ＋ O‘quvchi qo‘shish
+            </button>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="statistics">
+
+            <div class="stat-card">
+
+                <div class="stat-left">
+
+                    <div class="stat-icon blue">
+                        👨‍🎓
+                    </div>
+
+                    <div>
+                        <p>Jami o‘quvchilar</p>
+                        <h2 id="totalStudents">0</h2>
+                    </div>
+
+                </div>
+
+                <span class="stat-arrow">→</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-left">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+                        <p>Faol o‘quvchilar</p>
+                        <h2 id="activeStudents">0</h2>
+                    </div>
+
+                </div>
+
+                <span class="stat-arrow">→</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-left">
+
+                    <div class="stat-icon orange">
+                        👥
+                    </div>
+
+                    <div>
+                        <p>Guruhlar</p>
+                        <h2 id="totalGroups">0</h2>
+                    </div>
+
+                </div>
+
+                <span class="stat-arrow">→</span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-left">
+
+                    <div class="stat-icon purple">
+                        ⭐
+                    </div>
+
+                    <div>
+                        <p>O‘rtacha ball</p>
+                        <h2 id="averageGrade">0</h2>
+                    </div>
+
+                </div>
+
+                <span class="stat-arrow">→</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENTS -->
+        <section class="students-card">
+
+            <div class="students-header">
+
+                <div>
+
+                    <h2>
+                        O‘quvchilar ro‘yxati
+                    </h2>
+
+                    <p>
+                        Velora o‘quv markazi
+                    </p>
+
+                </div>
+
+
+                <div class="filters">
+
+                    <div class="search">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="O‘quvchini qidirish..."
+                        >
+
+                    </div>
+
+
+                    <select id="groupFilter">
+
+                        <option value="all">
+                            Barcha guruhlar
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>O‘QUVCHI</th>
+                            <th>GURUH</th>
+                            <th>TELEFON</th>
+                            <th>BALL</th>
+                            <th>TO‘LOV</th>
+                            <th>DAVOMAT</th>
+                            <th>STATUS</th>
+                            <th>AMALLAR</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTable"></tbody>
+
+                </table>
+
+
+                <div
+                    id="emptyMessage"
+                    class="empty"
+                >
+
+                    <div class="empty-icon">
+                        📭
+                    </div>
+
+                    <h3>
+                        O‘quvchi topilmadi
+                    </h3>
+
+                    <p>
+                        Qidiruv bo‘yicha ma’lumot topilmadi.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <span>
+                © 2026 Velora O‘quv Markazi
+            </span>
+
+            <span>
+                Student Management System
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-top">
+
+            <div>
+
+                <h2 id="modalTitle">
+                    Yangi o‘quvchi
+                </h2>
+
+                <p>
+                    O‘quvchi ma’lumotlarini kiriting
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-btn"
+                id="closeModal"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <form id="studentForm">
+
+            <input
+                type="hidden"
+                id="studentId"
+            >
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Ism</label>
+
+                    <input
+                        type="text"
+                        id="firstName"
+                        placeholder="Ism"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Familiya</label>
+
+                    <input
+                        type="text"
+                        id="lastName"
+                        placeholder="Familiya"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Guruh</label>
+
+                    <input
+                        type="text"
+                        id="group"
+                        placeholder="Python-101"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Telefon</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="+998 90 123 45 67"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>Ball</label>
+
+                    <input
+                        type="number"
+                        id="grade"
+                        min="0"
+                        max="100"
+                        placeholder="0 - 100"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                        <option value="active">
+                            Faol
+                        </option>
+
+                        <option value="inactive">
+                            Faol emas
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>To‘lov holati</label>
+
+                    <select id="payment">
+
+                        <option value="paid">
+                            To‘langan
+                        </option>
+
+                        <option value="debt">
+                            Qarzdor
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Davomat</label>
+
+                    <select id="attendance">
+
+                        <option value="present">
+                            Qatnashdi
+                        </option>
+
+                        <option value="absent">
+                            Darsga qatnashmadi
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelBtn"
+                >
+                    Bekor qilish
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    💾 Saqlash
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
